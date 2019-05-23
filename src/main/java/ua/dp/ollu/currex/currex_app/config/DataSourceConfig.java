@@ -62,6 +62,15 @@ public class DataSourceConfig {
         return template;
     }
 
+    @Bean
+    RestTemplate restTemplate() {
+//        List<HttpMessageConverter<?>> messageConverters = new ArrayList<>(Arrays.asList(
+//                new MappingJackson2HttpMessageConverter(),
+//                new MappingJackson2XmlHttpMessageConverter()
+//        ));
+        return new RestTemplate();
+    }
+
     private void createIfNotExistDb(JdbcTemplate template) {
         try {
             ResultSet reference = Objects.requireNonNull(template.getDataSource()).getConnection().getMetaData().getTables(null, null, "reference", null);
@@ -80,6 +89,11 @@ public class DataSourceConfig {
             template.execute(sql);
             sql = sqlFromResource("/operations.sql");
             template.execute(sql);
+            sql = sqlFromResource("/reference_data.sql");
+            String[] lines = sql.split("\n");
+            for (String line : lines) {
+                template.execute(line);
+            }
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -109,14 +123,5 @@ public class DataSourceConfig {
             }
         }
         return null;
-    }
-
-    @Bean
-    RestTemplate restTemplate() {
-//        List<HttpMessageConverter<?>> messageConverters = new ArrayList<>(Arrays.asList(
-//                new MappingJackson2HttpMessageConverter(),
-//                new MappingJackson2XmlHttpMessageConverter()
-//        ));
-        return new RestTemplate();
     }
 }
