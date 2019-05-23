@@ -1,6 +1,7 @@
 package ua.dp.ollu.currex.currex_app.repository;
 
 import org.springframework.stereotype.Service;
+import ua.dp.ollu.currex.currex_app.config.DbSettings;
 import ua.dp.ollu.currex.currex_app.model.Operation;
 import ua.dp.ollu.currex.currex_app.model.Reference;
 
@@ -17,6 +18,12 @@ class UserDaoJDBCImpl implements UserDao {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private DbSettings dbSettings;
+
+    public UserDaoJDBCImpl(DbSettings dbSettings) {
+        this.dbSettings = dbSettings;
     }
 
     @Override
@@ -65,9 +72,9 @@ class UserDaoJDBCImpl implements UserDao {
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-                "jdbc:derby:/home/oleg/IdeaProjects/PrivatBank/PrivatBankCurrency/DB/Currex",
-                "aaa",
-                "aaa");
+                dbSettings.getUrl(),
+                dbSettings.getUser(),
+                dbSettings.getPassword());
     }
 
     private void getConnection(OnConnection onConnection) {
