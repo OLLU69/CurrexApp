@@ -18,9 +18,9 @@
 <body>
 <h2>Справочник</h2>
 <p></p>
-<input type="button" value="Домой" onclick="toHome()">
 <input type="button" value="Обмен" onclick="toExchange()">
 <input type="button" value="Операции" onclick="toUserOperations()">
+<input type="button" value="Выход" onclick="toLogout()">
 <p></p>
 <%--suppress HtmlDeprecatedAttribute --%>
 <table border="1" cellspacing="0" cellpadding="5">

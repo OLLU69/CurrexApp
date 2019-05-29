@@ -18,8 +18,8 @@
 <body>
 <h2>Справочник</h2>
 <p></p>
-<input type="button" value="Домой" onclick="toHome()">
 <input type="button" value="Операции" onclick="toAdminOperations()">
+<input type="button" value="Выход" onclick="toLogout()">
 <p></p>
 <input type="button" value="Обновить" onclick="UpdateReference()">
 <p></p>

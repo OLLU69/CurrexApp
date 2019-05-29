@@ -121,9 +121,9 @@
 <body>
 <h2>Обмен</h2>
 <p></p>
-<input type="button" onclick="toHome()" value="Домой">
 <input value="операции" type="button" onclick="toUserOperations()">
 <input value="справочник" type="button" onclick="toUserReference()">
+<input type="button" value="Выход" onclick="toLogout()">
 <p></p>
 <input type="button" onclick="onExchange()" value="обмен">
 <p></p>

@@ -43,6 +43,10 @@ function toAdminOperations() {
     sendGetRequest("/admin/operations");
 }
 
+function toLogout() {
+    sendGetRequest("/logout");
+}
+
 function toAdminReference() {
     sendGetRequest("/admin/reference");
 }

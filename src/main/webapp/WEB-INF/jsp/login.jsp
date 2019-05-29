@@ -9,22 +9,18 @@
 <body>
 <h1>Login</h1>
    
-<form name='f' action="login" method='POST'>       
+<form name='loginForm' action="login" method='POST'>       
     <table>
         <tr>
-            <td>User:</td>
-            <td>
-                <%--suppress HtmlFormInputWithoutLabel --%>
-                <input type='text' name='username' value=''></td>
+            <td><label for="user">Логин:</label></td>
+            <td><input id="user" type='text' name='username' value=''></td>
         </tr>
         <tr>
-            <td>Password:</td>
-            <td>
-                <%--suppress HtmlFormInputWithoutLabel --%>
-                <input type='password' name='password'/></td>
+            <td><label for="pass">Пароль:</label></td>
+            <td><input id="pass" type='password' name='password'/></td>
         </tr>
         <tr>
-            <td><input name="submit" type="submit" value="submit"/></td>
+            <td><input name="submit" type="submit" value="Вход"/></td>
         </tr>
     </table>
 </form>
