@@ -5,12 +5,12 @@
   Time: 19:43
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="common.jsp" %>
+<%@ include file="../common.jsp" %>
 
 <html>
 <head>
     <title>Операции</title>
-    <%@include file="js.jsp" %>
+    <%@include file="../js.jsp" %>
 </head>
 <body>
 <h2>Операции</h2>

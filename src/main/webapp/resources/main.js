@@ -7,12 +7,12 @@ function init(rootPath) {
 }
 
 function toExchange() {
-    sendGetRequest("/exchange");
+    sendGetRequest("/user/exchange");
 }
 
 function exchange(data, onSuccess, onError) {
     $.ajax({
-        url: homePath + "/exchange",
+        url: homePath + "/user/exchange",
         type: "POST",
         data: JSON.stringify(data),
         contentType: "application/json;charset=UTF-8",
@@ -36,27 +36,27 @@ function toHome() {
 }
 
 function toUserOperations() {
-    sendGetRequest("/user_operations");
+    sendGetRequest("/user/operations");
 }
 
 function toAdminOperations() {
-    sendGetRequest("/admin_operations");
+    sendGetRequest("/admin/operations");
 }
 
 function toAdminReference() {
-    sendGetRequest("/admin_reference");
+    sendGetRequest("/admin/reference");
 }
 
 function toUserReference() {
-    sendGetRequest("/user_reference");
+    sendGetRequest("/user/reference");
 }
 
 function UpdateReference() {
-    sendGetRequest("/update_references");
+    sendGetRequest("/admin/update_references");
 }
 
 function removeOperation(id) {
-    sendGetRequest("/remove_operation/" + id);
+    sendGetRequest("/user/remove_operation/" + id);
 }
 
 function sendGetRequest(path) {

@@ -15,15 +15,22 @@ import java.text.SimpleDateFormat;
 @Controller
 public class AppController {
 
-    private static final String ADMIN_OPERATIONS_VIEW = "/admin_operations";
-    private static final String USER_OPERATIONS_VIEW = "/user_operations";
-    private static final String ADMIN_REFERENCE_VIEW = "/admin_reference";
-    private static final String USER_REFERENCE_VIEW = "/user_reference";
+    private static final String ADMIN_OPERATIONS_VIEW = "/admin/operations";
+    private static final String USER_OPERATIONS_VIEW = "/user/operations";
+    private static final String ADMIN_REFERENCE_VIEW = "/admin/reference";
+    private static final String USER_REFERENCE_VIEW = "/user/reference";
     private static final String INDEX_VIEW = "/index";
-    private static final String EXCHANGE_VIEW = "/exchange";
+    private static final String EXCHANGE_VIEW = "/user/exchange";
     private static final String REFERENCES_VAR = "references";
     private static final String OPERATIONS_VAR = "operations";
     private static final String DATE_FORMAT = "dd.MM.YY HH:mm";
+    private static final String USER_EXCHANGE_MAPPING = "user/exchange";
+    private static final String USER_REFERENCE_MAPPING = "/user/reference";
+    private static final String ADMIN_REFERENCE_MAPPING = "/admin/reference";
+    private static final String ADMIN_UPDATE_REFERENCES_MAPPING = "/admin/update_references";
+    private static final String USER_OPERATIONS_MAPPING = "/user/operations";
+    private static final String ADMIN_OPERATIONS_MAPPING = "/admin/operations";
+    private static final String REMOVE_OPERATION_ID_MAPPING = "remove/operation/{id}";
     private AdminService adminService;
     private UserService userService;
     private SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
@@ -39,13 +46,13 @@ public class AppController {
         return INDEX_VIEW;
     }
 
-    @GetMapping(value = "exchange")
+    @GetMapping(value = USER_EXCHANGE_MAPPING)
     public String showExchange(ModelMap model) {
         model.addAttribute("references", userService.getReferences());
         return EXCHANGE_VIEW;
     }
 
-    @PostMapping(value = "/exchange")
+    @PostMapping(value = USER_EXCHANGE_MAPPING)
     @ResponseBody
     public String addExchange(@RequestBody Operation operation, ModelMap model) {
         try {
@@ -57,40 +64,40 @@ public class AppController {
         }
     }
 
-    @GetMapping(value = "/user_reference")
+    @GetMapping(value = USER_REFERENCE_MAPPING)
     public String userReference(ModelMap model) {
         model.addAttribute(REFERENCES_VAR, userService.getReferences());
         return USER_REFERENCE_VIEW;
     }
 
-    @GetMapping(value = "/admin_reference")
+    @GetMapping(value = ADMIN_REFERENCE_MAPPING)
     public String adminReference(ModelMap model) {
         model.addAttribute(REFERENCES_VAR, adminService.getReferences());
         return ADMIN_REFERENCE_VIEW;
     }
 
-    @GetMapping(value = "/update_references")
+    @GetMapping(value = ADMIN_UPDATE_REFERENCES_MAPPING)
     public String updateReferences(ModelMap model) {
         adminService.updateReferences();
         model.addAttribute(REFERENCES_VAR, adminService.getReferences());
         return ADMIN_REFERENCE_VIEW;
     }
 
-    @GetMapping(value = "/user_operations")
+    @GetMapping(value = USER_OPERATIONS_MAPPING)
     public String userOperations(ModelMap model) {
         model.addAttribute(OPERATIONS_VAR, userService.getOperations());
         model.addAttribute("formatter", formatter);
         return USER_OPERATIONS_VIEW;
     }
 
-    @GetMapping(value = "/admin_operations")
+    @GetMapping(value = ADMIN_OPERATIONS_MAPPING)
     public String adminOperations(ModelMap model) {
         model.addAttribute(OPERATIONS_VAR, adminService.getOperations());
         model.addAttribute("formatter", formatter);
         return ADMIN_OPERATIONS_VIEW;
     }
 
-    @GetMapping(value = "remove_operation/{id}")
+    @GetMapping(value = REMOVE_OPERATION_ID_MAPPING)
     public String removeOperation(@PathVariable("id") long id, ModelMap model) {
         adminService.removeOperation(id);
         model.addAttribute(OPERATIONS_VAR, adminService.getOperations());

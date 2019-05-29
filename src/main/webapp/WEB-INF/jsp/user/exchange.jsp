@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="common.jsp" %>
+<%@include file="../common.jsp" %>
 <jsp:useBean id="references" scope="request" type="java.util.List<ua.dp.ollu.currex.currex_app.model.Reference>"/>
 
 
@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Пользователь</title>
-    <%@include file="js.jsp" %>
+    <%@include file="../js.jsp" %>
     <script type="text/javascript">
         var references = [
                 <c:forEach var="ref" items="${references}">{
@@ -102,6 +102,7 @@
                     this.currencySale = tmp;
                 }
             };
+            //<%--suppress EqualityComparisonWithCoercionJS --%>
             if (getTypeRadio().val() == 1) {
                 //если режим продажа то #result - сумма покупки
                 data.swap()
@@ -129,10 +130,10 @@
 <table>
     <tr>
         <td>
-            <label for="curenсySelector">Валюта</label>
+            <label for="currencySelector">Валюта</label>
         </td>
         <td>
-            <select id="curenсySelector" onchange="onChangeCurrency(this)">
+            <select id="currencySelector" onchange="onChangeCurrency(this)">
                 <c:forEach var="ref" items="${references}" varStatus="loop">
                     <option value="${loop.index}">${ref.stringCode}</option>
                 </c:forEach>
@@ -145,9 +146,14 @@
     </tr>
     <tr>
         <%--suppress HtmlFormInputWithoutLabel --%>
-        <td><input type="radio" name="type" checked value="0" onclick="onBuyType(this)">Покупка</td>
-        <%--suppress HtmlFormInputWithoutLabel --%>
-        <td><input type="radio" name="type" value="1" onclick="onBuyType(this)">Продажа</td>
+        <td>
+            <%--suppress HtmlFormInputWithoutLabel --%>
+            <input type="radio" name="type" checked value="0" onclick="onBuyType(this)">Покупка
+        </td>
+        <td>
+            <%--suppress HtmlFormInputWithoutLabel --%>
+            <input type="radio" name="type" value="1" onclick="onBuyType(this)">Продажа
+        </td>
     </tr>
     <tr>
         <td><label for="currSumm">Сумма</label></td>

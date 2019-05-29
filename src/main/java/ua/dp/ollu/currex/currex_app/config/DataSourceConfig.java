@@ -64,10 +64,6 @@ public class DataSourceConfig {
 
     @Bean
     RestTemplate restTemplate() {
-//        List<HttpMessageConverter<?>> messageConverters = new ArrayList<>(Arrays.asList(
-//                new MappingJackson2HttpMessageConverter(),
-//                new MappingJackson2XmlHttpMessageConverter()
-//        ));
         return new RestTemplate();
     }
 
@@ -90,6 +86,7 @@ public class DataSourceConfig {
             sql = sqlFromResource("/operations.sql");
             template.execute(sql);
             sql = sqlFromResource("/reference_data.sql");
+            assert sql != null;
             String[] lines = sql.split("\n");
             for (String line : lines) {
                 template.execute(line);

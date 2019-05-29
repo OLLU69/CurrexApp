@@ -5,7 +5,7 @@
   Time: 19:23
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="common.jsp" %>
+<%@ include file="../common.jsp" %>
 
 
 <!DOCTYPE html>
@@ -13,15 +13,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Справочник</title>
-    <%@include file="js.jsp" %>
+    <%@include file="../js.jsp" %>
 </head>
 <body>
 <h2>Справочник</h2>
 <p></p>
 <input type="button" value="Домой" onclick="toHome()">
-<input type="button" value="Операции" onclick="toAdminOperations()">
-<p></p>
-<input type="button" value="Обновить" onclick="UpdateReference()">
+<input type="button" value="Обмен" onclick="toExchange()">
+<input type="button" value="Операции" onclick="toUserOperations()">
 <p></p>
 <%--suppress HtmlDeprecatedAttribute --%>
 <table border="1" cellspacing="0" cellpadding="5">
