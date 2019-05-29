@@ -17,7 +17,7 @@ public class AppControllerTests {
         AppController appController =
                 new AppController(adminService, userService);
 
-        Assert.assertEquals("/index", appController.index());
+        Assert.assertEquals("/index", appController.index(new ModelMap()));
     }
 
     @Test
