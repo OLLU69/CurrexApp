@@ -56,4 +56,6 @@
 ## Запуск 
 
 сборка и запуск осуществляется с помощью maven:
-* mvn tomcat7:run
+```maven
+mvn tomcat7:run
+```
